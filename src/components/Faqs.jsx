@@ -52,7 +52,7 @@ export function Faqs() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Such an awe-inspriing service yet simple service is hard to believe - so you may have some questions.  Here are some of the more frequent asked.
+            Such an awe-inspiring service yet simple service is hard to believe - so you may have some questions.  Here are some of the more frequent asked.
           </p>
         </div>
 		<div itemscope itemtype="https://schema.org/FAQPage">
