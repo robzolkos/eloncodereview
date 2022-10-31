@@ -60,7 +60,7 @@ export function PrimaryFeatures() {
             </div>
             <p className="mt-5 text-lg font-medium leading-6 text-gray-900">Fax Your Printouts</p>
           </dt>
-          <dd className="mt-2 text-base text-gray-500">Take your code print outs and fax them to our toll free number.  Our AI will recombine the pages in correct order and then robot technology will deliver them to Elon for review.</dd>
+          <dd className="mt-2 text-base text-gray-500">Take your code print outs and fax them to our troll free number.  Our AI will recombine the pages in correct order and then robot technology will deliver them to Elon for review.</dd>
         </div>
 
         <div>
