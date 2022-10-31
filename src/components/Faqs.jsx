@@ -55,7 +55,7 @@ export function Faqs() {
             Such an awe-inspiring service yet simple service is hard to believe - so you may have some questions.  Here are some of the more frequent asked.
           </p>
         </div>
-		<div itemscope itemtype="https://schema.org/FAQPage">
+		<div itemScope itemType="https://schema.org/FAQPage">
 			<ul
 			  role="list"
 			  className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
@@ -64,10 +64,10 @@ export function Faqs() {
 				<li key={columnIndex}>
 				  <ul role="list" className="flex flex-col gap-y-8">
 					{column.map((faq, faqIndex) => (
-					  <li key={faqIndex}><div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-						<h3 className="font-display text-lg leading-7 text-slate-900" itemprop="name">
+					  <li key={faqIndex}><div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+						<h3 className="font-display text-lg leading-7 text-slate-900" itemProp="name">
 						  {faq.question}
-						</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">
+						</h3><div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer"><div itemProp="text">
 						<p className="mt-4 text-sm text-slate-700">{faq.answer}</p>
 						</div>
 					</div>
