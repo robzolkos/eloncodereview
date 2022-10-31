@@ -23,7 +23,7 @@ const faqs = [
     {
       question: 'How do I apply for a job helping with these code reviews?',
       answer:
-        "Due to Elon's fanatical adherance to time mangement principles and his magical 'LGTM' commentary there won't ever be a pull request that goes un-reviewed for longer than 2 to 3 minutes.  As such we do not foresee needing to hire any more people.",
+        "Due to Elon's fanatical adherence to time mangement principles and his magical 'LGTM' commentary there won't ever be a pull request that goes un-reviewed for longer than 2 to 3 minutes.  As such we do not foresee needing to hire any more people.",
     },
   ],
 ]
@@ -52,7 +52,7 @@ export function Faqs() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Such an awe-inspriing service yet simple service is hard to beleive - so you may have some questions.  Here are some of the more frequent asked.
+            Such an awe-inspiring service yet simple service is hard to believe - so you may have some questions.  Here are some of the more frequent asked.
           </p>
         </div>
         <ul
