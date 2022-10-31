@@ -52,28 +52,33 @@ export function Faqs() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Such an awe-inspriing service yet simple service is hard to beleive - so you may have some questions.  Here are some of the more frequent asked.
+            Such an awe-inspriing service yet simple service is hard to believe - so you may have some questions.  Here are some of the more frequent asked.
           </p>
         </div>
-        <ul
-          role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
-        >
-          {faqs.map((column, columnIndex) => (
-            <li key={columnIndex}>
-              <ul role="list" className="flex flex-col gap-y-8">
-                {column.map((faq, faqIndex) => (
-                  <li key={faqIndex}>
-                    <h3 className="font-display text-lg leading-7 text-slate-900">
-                      {faq.question}
-                    </h3>
-                    <p className="mt-4 text-sm text-slate-700">{faq.answer}</p>
+		<div itemscope itemtype="https://schema.org/FAQPage">
+			<ul
+			  role="list"
+			  className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
+			>
+			  {faqs.map((column, columnIndex) => (
+				<li key={columnIndex}>
+				  <ul role="list" className="flex flex-col gap-y-8">
+					{column.map((faq, faqIndex) => (
+					  <li key={faqIndex}><div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+						<h3 className="font-display text-lg leading-7 text-slate-900" itemprop="name">
+						  {faq.question}
+						</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">
+						<p className="mt-4 text-sm text-slate-700">{faq.answer}</p>
+						</div>
+					</div>
+				   </div>
                   </li>
                 ))}
               </ul>
             </li>
           ))}
         </ul>
+	   </div>
       </Container>
     </section>
   )
