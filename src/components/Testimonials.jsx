@@ -7,6 +7,7 @@ import avatarImage3 from '@/images/avatars/avatar-3.png'
 import avatarImage4 from '@/images/avatars/avatar-4.png'
 import avatarImage5 from '@/images/avatars/avatar-5.png'
 import avatarImage6 from '@/images/avatars/mohsen.jpg'
+import avatarImage7 from '@/images/avatars/avatar-7.png'
 
 const testimonials = [
   [
@@ -26,6 +27,15 @@ const testimonials = [
         name: 'Amy',
         role: 'IOS Developer',
         image: avatarImage4,
+      },
+    },
+    {
+      content:
+        "I love how Elon handwrites the reviews and grades my code. Just like my college professors. From 1940s.",
+      author: {
+        name: 'Rishabh',
+        role: 'SRE Engineer',
+        image: avatarImage7,
       },
     },
   ],
