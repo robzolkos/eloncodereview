@@ -133,10 +133,10 @@ export function Pricing() {
             description="Perfect for large social media companies."
             href="/register"
             features={[
-              'Elon personally reviews all code',
+              'Everything in Starter, plus',
               'Printouts returned beautifully bound with handwritten notes',
               "Exclusive 🚢 emoji used when code review is ready for shipping",
-              "All emojis are hand drawn by Elon"
+              "Exclusive free pickup by a reputed courier"
             ]}
           />
           <Plan
@@ -145,8 +145,8 @@ export function Pricing() {
             description="Supreme Ultimate plan"
             href="/register"
             features={[
-              'Elon personally reviews all code',
-              'Printouts returned beautifully bound with handwriten notes',
+              'Everything in Tweet Level, plus',
+              'Up to 280 characters of comments well within twitter word limit',
               'Elon hand delivers the review in his Tesla',
               'Once merged your code is printed out and sent to space aboard a SpaceX rocket.',
             ]}
