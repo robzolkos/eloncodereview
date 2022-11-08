@@ -12,9 +12,9 @@ export default function Register() {
       <Head>
         <title>Sign Up</title>
         <link rel="canonical" href="https://eloncodereview.com/register" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png"  sizes="48x48" href="/favicon.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png"  sizes="48x48" href="/favicon.png" />
       </Head>
       <AuthLayout>
         <div className="flex flex-col">
