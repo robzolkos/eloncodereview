@@ -110,7 +110,8 @@ export function Pricing() {
             for social media juggernauts of any size.
           </h2>
           <p className="mt-4 text-lg text-slate-400">
-            It doesn’t matter what your market cap is, let Elon check your code, personally.
+            It doesn’t matter what your market cap is, let Elon check your code,
+            personally.
           </p>
         </div>
         <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
@@ -122,8 +123,8 @@ export function Pricing() {
             features={[
               'Elon personally reviews all code',
               "Up to 4 characters of comments including '+1' and 'LGTM'",
-              "🚀 emoji used when code review is ready for merge",
-              "All emojis are hand drawn by Elon"
+              '🚀 emoji used when code review is ready for merge',
+              'All emojis are hand drawn by Elon',
             ]}
           />
           <Plan
@@ -135,8 +136,8 @@ export function Pricing() {
             features={[
               'Everything in Starter, plus',
               'Printouts returned beautifully bound with handwritten notes',
-              "Exclusive 🚢 emoji used when code review is ready for shipping",
-              "Exclusive free pickup by a reputed courier"
+              'Exclusive 🚢 emoji used when code review is ready for shipping',
+              'Exclusive free pickup by a reputed courier',
             ]}
           />
           <Plan

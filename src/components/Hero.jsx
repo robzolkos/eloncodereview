@@ -22,7 +22,10 @@ export function Hero() {
         by Elon Musk.
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-        Most code is reviewed in Github, Gitlab or somewhere online, but that is <i>too</i> efficient. Why not <strong>print</strong> out your code and submit the printout by <strong>fax</strong> for review by <strong>Elon Musk</strong> personally!
+        Most code is reviewed in Github, Gitlab or somewhere online, but that is{' '}
+        <i>too</i> efficient. Why not <strong>print</strong> out your code and
+        submit the printout by <strong>fax</strong> for review by{' '}
+        <strong>Elon Musk</strong> personally!
       </p>
       <div className="mt-10 flex justify-center gap-x-6">
         <Button href="/register">Get 6 months free</Button>
@@ -39,7 +42,6 @@ export function Hero() {
           <span className="ml-3">Watch video</span>
         </Button>
       </div>
-
     </Container>
   )
 }

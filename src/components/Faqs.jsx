@@ -10,13 +10,12 @@ const faqs = [
       answer:
         'Of course!  Elon has rescheduled large blocks of time away from making electric cars and saving humanity by colonizing Mars to focus almost entirely on reviewing YOUR code.',
     },
-
-
   ],
   [
     {
       question: 'Sounds expensive.  How much does this cost?',
-      answer: 'This service is very inexpensive.  Check out our pricing table.  To ensure the continuation of life on planet Earth code reviews are one of the safest ways to ensure no large infestations of bugs occur.',
+      answer:
+        'This service is very inexpensive.  Check out our pricing table.  To ensure the continuation of life on planet Earth code reviews are one of the safest ways to ensure no large infestations of bugs occur.',
     },
   ],
   [
@@ -52,33 +51,51 @@ export function Faqs() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Such an awe-inspiring service yet simple service is hard to believe - so you may have some questions.  Here are some of the more frequent asked.
+            Such an awe-inspiring service yet simple service is hard to believe
+            - so you may have some questions. Here are some of the more frequent
+            asked.
           </p>
         </div>
-		<div itemScope itemType="https://schema.org/FAQPage">
-			<ul
-			  role="list"
-			  className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
-			>
-			  {faqs.map((column, columnIndex) => (
-				<li key={columnIndex}>
-				  <ul role="list" className="flex flex-col gap-y-8">
-					{column.map((faq, faqIndex) => (
-					  <li key={faqIndex}><div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-						<h3 className="font-display text-lg leading-7 text-slate-900" itemProp="name">
-						  {faq.question}
-						</h3><div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer"><div itemProp="text">
-						<p className="mt-4 text-sm text-slate-700">{faq.answer}</p>
-						</div>
-					</div>
-				   </div>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-	   </div>
+        <div itemScope itemType="https://schema.org/FAQPage">
+          <ul
+            role="list"
+            className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
+          >
+            {faqs.map((column, columnIndex) => (
+              <li key={columnIndex}>
+                <ul role="list" className="flex flex-col gap-y-8">
+                  {column.map((faq, faqIndex) => (
+                    <li key={faqIndex}>
+                      <div
+                        itemScope
+                        itemProp="mainEntity"
+                        itemType="https://schema.org/Question"
+                      >
+                        <h3
+                          className="font-display text-lg leading-7 text-slate-900"
+                          itemProp="name"
+                        >
+                          {faq.question}
+                        </h3>
+                        <div
+                          itemScope
+                          itemProp="acceptedAnswer"
+                          itemType="https://schema.org/Answer"
+                        >
+                          <div itemProp="text">
+                            <p className="mt-4 text-sm text-slate-700">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </section>
   )

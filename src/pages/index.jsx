@@ -15,15 +15,27 @@ export default function Home() {
     <>
       <Script src="https://cdn.usefathom.com/script.js" data-site="GCGAUKHE" />
       <Head>
-        <title>Elon Code Review - Print it out and Elon Musk will check it</title>
+        <title>
+          Elon Code Review - Print it out and Elon Musk will check it
+        </title>
         <meta
           name="description"
           content="Print out your last 30/60 days of code and Elon Musk will review it."
         />
         <link rel="canonical" href="https://eloncodereview.com" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png"  sizes="48x48" href="/favicon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
       </Head>
       <Header />
       <main>
