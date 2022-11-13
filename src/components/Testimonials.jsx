@@ -31,7 +31,7 @@ const testimonials = [
     },
     {
       content:
-        "I love how Elon handwrites the reviews and grades my code. Just like my college professors. From 1940s.",
+        'I love how Elon handwrites the reviews and grades my code. Just like my college professors. From 1940s.',
       author: {
         name: 'Rishabh',
         role: 'SRE Engineer',
@@ -60,14 +60,13 @@ const testimonials = [
     },
     {
       content:
-        "I tell my students the best way to learn programming is to hand write your code.  I recommend everyone send their hand-written code to Elon Musk for review.",
+        'I tell my students the best way to learn programming is to hand write your code.  I recommend everyone send their hand-written code to Elon Musk for review.',
       author: {
         name: 'Mohsen Modhej',
         role: 'Expert Developer',
         image: avatarImage6,
       },
     },
-
   ],
   [
     {
@@ -112,7 +111,9 @@ export function Testimonials() {
             Loved by developers worldwide.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Our process is so simple and efficient that people can&apos;t help but fall in love with code reviews conducted by Elon Musk on your very own print outs.
+            Our process is so simple and efficient that people can&apos;t help
+            but fall in love with code reviews conducted by Elon Musk on your
+            very own print outs.
           </p>
         </div>
         <ul
