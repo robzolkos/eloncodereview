@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./src/index.css -o ./src/dist/output.css --minify",
-    "build:html": "echo \"Just pretend something happened\"",
+    "build": "tailwindcss -i ./index.css -o ./dist/output.css --minify",
     "fmt": "prettier --write . --ignore-path=.gitignore --plugin-search-dir=."
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwindcss": "^3.2.4"
