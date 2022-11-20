@@ -1,31 +1,21 @@
 {
-  "name": "eloncodereview",
-  "version": "0.1.0",
+  "name": "eloncodereview2",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write . --ignore-path=.gitignore --plugin-search-dir=."
-  },
-  "browserslist": "defaults, not ie <= 11",
-  "dependencies": {
-    "@headlessui/react": "^1.7.2",
-    "@tailwindcss/forms": "^0.5.3",
-    "autoprefixer": "^10.4.12",
-    "clsx": "^1.2.1",
-    "focus-visible": "^5.2.0",
-    "next": "^12.3.1",
-    "postcss-focus-visible": "^6.0.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "^3.1.8"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "fmt": "prettier --write . --ignore-path=.gitignore --plugin-search-dir=node_modules"
   },
   "devDependencies": {
-    "eslint": "8.19.0",
-    "eslint-config-next": "12.2.5",
+    "@tailwindcss/forms": "^0.5.3",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
     "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.13"
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwindcss": "^3.2.4",
+    "vite": "^3.2.3"
   }
 }

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html
+  class="h-full scroll-smooth bg-white antialiased [font-feature-settings:'ss01']"
+  lang="en"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>Elon Code Review — Print it out and Elon Musk will check it</title>
+    <meta
+      name="title"
+      content="Elon Code Review — Print it out and Elon Musk will check it"
+    />
+    <meta
+      name="description"
+      content="Most code is reviewed in Github, Gitlab, or somewhere online, but that is way too efficient! Why not print out your code and submit the printout by fax for review by Elon Musk personally?"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eloncodereview.com/" />
+    <meta
+      property="og:title"
+      content="Elon Code Review — Print it out and Elon Musk will check it"
+    />
+    <meta
+      property="og:description"
+      content="Most code is reviewed in Github, Gitlab, or somewhere online, but that is way too efficient! Why not print out your code and submit the printout by fax for review by Elon Musk personally?"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://eloncodereview.com/" />
+    <meta
+      property="twitter:title"
+      content="Elon Code Review — Print it out and Elon Musk will check it"
+    />
+    <meta
+      property="twitter:description"
+      content="Most code is reviewed in Github, Gitlab, or somewhere online, but that is way too efficient! Why not print out your code and submit the printout by fax for review by Elon Musk personally?"
+    />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" sizes="48x48" href="/favicon.ico" />
+    <!-- Alpine is awesome -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script type="module" src="./main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex h-full flex-col">
+    <!-- Header -->
+    <header class="py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav class="relative z-50 flex justify-between">
+          <div class="flex items-center md:gap-x-12">
+            <a href="#" aria-label="Home">
+              <!-- Logo -->
+              <div class="flex h-10 w-auto items-center">
+                <span class="text-3xl">🖨</span>
+                <span class="ml-2 text-2xl font-bold">Elon Code Review</span>
+              </div>
+            </a>
+            <div class="hidden md:flex md:gap-x-6">
+              <a
+                href="#features"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+              >
+                Features
+              </a>
+              <a
+                href="#testimonials"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+              >
+                Testimonials
+              </a>
+              <a
+                href="#pricing"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+              >
+                Pricing
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center gap-x-5 md:gap-x-8">
+            <div class="hidden md:block">
+              <a
+                href="/register"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+              >
+                Sign in
+              </a>
+            </div>
+            <div class="-mr-1 md:hidden">
+              <!-- Popover -->
+              <div
+                x-data="{
+                    open: false,
+                    toggle() {
+                        if (this.open) {
+                            return this.close()
+                        }
+
+                        this.$refs.button.focus()
+
+                        this.open = true
+                    },
+                    close(focusAfter) {
+                        if (! this.open) return
+
+                        this.open = false
+
+                        focusAfter && focusAfter.focus()
+                    }
+                }"
+                x-id="['dropdown-button']"
+              >
+                <button
+                  x-ref="button"
+                  @click="toggle()"
+                  :aria-expanded="open"
+                  :aria-controls="$id('dropdown-button')"
+                  aria-label="Toggle Navigation"
+                  class="relative z-10 flex h-8 w-8 items-center justify-center [&:not(:focus-visible)]:focus:outline-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-3.5 w-3.5 overflow-visible stroke-slate-700"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  >
+                    <path
+                      d="M0 1H14M0 7H14M0 13H14"
+                      class="origin-center transition"
+                      :class="open && 'scale-90 opacity-0'"
+                    />
+                    <path
+                      d="M2 2L12 12M12 2L2 12"
+                      class="origin-center transition"
+                      :class="open || 'scale-90 opacity-0'"
+                    />
+                  </svg>
+                </button>
+                <div
+                  x-ref="panel"
+                  x-show="open"
+                  x-transition.origin.top.left
+                  @click.outside="close($refs.button)"
+                  :id="$id('dropdown-button')"
+                  style="display: none"
+                  class="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
+                >
+                  <a @click="toggle()" href="#features" class="block w-full p-2"
+                    >Features</a
+                  >
+                  <a
+                    @click="toggle()"
+                    href="#testimonials"
+                    class="block w-full p-2"
+                    >Testimonials</a
+                  >
+                  <a @click="toggle()" href="#pricing" class="block w-full p-2"
+                    >Pricing</a
+                  >
+                  <hr class="m-2 border-slate-300/40" />
+                  <a @click="toggle()" href="/register" class="block w-full p-2"
+                    >Sign in</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <!-- Hero -->
+      <section
+        class="mx-auto max-w-7xl px-4 pt-20 pb-16 text-center sm:px-6 lg:px-8 lg:pt-32"
+      >
+        <h1
+          class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl"
+        >
+          Print Your Code
+          <span class="relative whitespace-nowrap text-blue-600">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 418 42"
+              class="absolute top-2/3 left-0 h-[0.58em] w-full fill-blue-300/70"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"
+              />
+            </svg>
+            <span class="relative">for review</span>
+          </span>
+          by Elon Musk.
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
+          Most code is reviewed in Github, Gitlab or somewhere online, but that
+          is
+          <i>too</i> efficient. Why not <strong>print</strong> out your code and
+          submit the printout by <strong>fax</strong> for review by
+          <strong>Elon Musk</strong> personally!
+        </p>
+        <div class="mt-10 flex justify-center gap-x-6">
+          <a
+            href="/register"
+            class="group inline-flex items-center justify-center rounded-full bg-slate-900 py-2 px-4 text-sm font-semibold text-white hover:bg-slate-700 hover:text-slate-100 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 active:bg-slate-800 active:text-slate-300"
+            >Get 6 months free</a
+          >
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            class="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm text-slate-700 ring-1 ring-slate-200 hover:text-slate-900 hover:ring-slate-300 focus:outline-none focus-visible:outline-blue-600 focus-visible:ring-slate-300 active:bg-slate-100 active:text-slate-600"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-3 w-3 flex-none fill-blue-600 group-active:fill-current"
+            >
+              <path
+                d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z"
+              />
+            </svg>
+            <span class="ml-3">Watch video</span>
+          </a>
+        </div>
+      </section>
+      <!-- Primary Features -->
+      <section class="overflow-hidden bg-gray-50" id="features">
+        <div class="relative mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
+          <svg
+            class="absolute top-0 left-full -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
+            width="404"
+            height="784"
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="8b1b5f72-e944-4457-af67-0c6d15a99f38"
+                x="0"
+                y="0"
+                width="20"
+                height="20"
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x="0"
+                  y="0"
+                  width="4"
+                  height="4"
+                  class="text-gray-200"
+                  fill="currentColor"
+                ></rect>
+              </pattern>
+            </defs>
+            <rect
+              width="404"
+              height="784"
+              fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)"
+            ></rect>
+          </svg>
+          <div class="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
+            <div class="lg:col-span-1">
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                No fuss way to review your code.
+              </h2>
+            </div>
+            <dl
+              class="mt-10 space-y-10 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:space-y-0 lg:col-span-2 lg:mt-0"
+            >
+              <div>
+                <dt>
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-md bg-blue-600 text-white"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <p class="mt-5 text-lg font-medium leading-6 text-gray-900">
+                    Print Your Code
+                  </p>
+                </dt>
+                <dd class="mt-2 text-base text-gray-500">
+                  Go to your favorite text editor, select all the code you wrote
+                  in the last 30 days ago and copy paste it into Microsoft Word.
+                  Then press Print. Easy as that.
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-md bg-blue-600 text-white"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <p class="mt-5 text-lg font-medium leading-6 text-gray-900">
+                    Fax Your Printouts
+                  </p>
+                </dt>
+                <dd class="mt-2 text-base text-gray-500">
+                  Take your code print outs and fax them to our troll free
+                  number. Our AI will recombine the pages in correct order and
+                  then robot technology will deliver them to Elon for review.
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-md bg-blue-600 text-white"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <p class="mt-5 text-lg font-medium leading-6 text-gray-900">
+                    Wait for the mailman
+                  </p>
+                </dt>
+                <dd class="mt-2 text-base text-gray-500">
+                  Get your code review print out back with Elon Musk&#x27;s
+                  handwritten notes and hand drawn emojis.
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-md bg-blue-600 text-white"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <p class="mt-5 text-lg font-medium leading-6 text-gray-900">
+                    Send your code to space
+                  </p>
+                </dt>
+                <dd class="mt-2 text-base text-gray-500">
+                  All code reviews merged after a review by Elon Musk are
+                  automatically re-printed and sent to space aboard a SpaceX
+                  rocket. *Enterprise plan only.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+      <!-- Call to Action -->
+      <section
+        id="get-started-today"
+        class="relative overflow-hidden bg-blue-600 py-32"
+      >
+        <img
+          src="images/background-call-to-action.jpg"
+          width="2347"
+          height="1244"
+          alt=""
+          class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2"
+        />
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-lg text-center">
+            <h2
+              class="font-display text-3xl tracking-tight text-white sm:text-4xl"
+            >
+              Get printing today
+            </h2>
+            <p class="mt-4 text-lg tracking-tight text-white">
+              It’s time to take control of your code reviews. Let Elon Musk help
+              you!
+            </p>
+            <button
+              href="/register"
+              color="white"
+              class="group mt-10 inline-flex items-center justify-center rounded-full bg-slate-900 py-2 px-4 text-sm font-semibold text-white hover:bg-slate-700 hover:text-slate-100 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 active:bg-slate-800 active:text-slate-300"
+            >
+              Get 6 months free
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials -->
+      <section
+        id="testimonials"
+        aria-label="What our customers are saying"
+        class="bg-slate-50 py-20 sm:py-32"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl md:text-center">
+            <h2
+              class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
+            >
+              Loved by developers worldwide.
+            </h2>
+            <p class="mt-4 text-lg tracking-tight text-slate-700">
+              Our process is so simple and efficient that people can&apos;t help
+              but fall in love with code reviews conducted by Elon Musk on your
+              very own print outs.
+            </p>
+          </div>
+          <ul
+            x-data="{
+              testimonials: [
+              {
+                id: 1,
+                content:
+                  'It used to take me forever to get my code reviewed.  Since Friday, I\'ve been printing it all out and getting Elon to look at it and my god its been amazing!!',
+                author: {
+                  name: 'Sheryl',
+                  role: 'Software Developer',
+                  image: 'images/avatars/avatar-1.png',
+                },
+              },
+              {
+                id: 2,
+                content:
+                  'This is a gamechanger. Kicking myself I didn\'t think of this. Would have made ProductHunt #1',
+                author: {
+                  name: 'Amy',
+                  role: 'IOS Developer',
+                  image: 'images/avatars/avatar-4.png',
+                },
+              },
+              {
+                id: 3,
+                content:
+                  'I love how Elon handwrites the reviews and grades my code. Just like my college professors. From 1940s.',
+                author: {
+                  name: 'Rishabh',
+                  role: 'SRE Engineer',
+                  image: 'images/avatars/avatar-7.png',
+                },
+              },
+              {
+                id: 4,
+                content:
+                  'Paper is not dead! What an amazing medium to get code reviews done! I love it.',
+                author: {
+                  name: 'Leland',
+                  role: 'Android Developer',
+                  image: 'images/avatars/avatar-5.png',
+                },
+              },
+              {
+                id: 5,
+                content:
+                  'I lol\'ed when asked to print out my code but for real this works.',
+                author: {
+                  name: 'Erin',
+                  role: 'Web Developer',
+                  image: 'images/avatars/avatar-2.png',
+                },
+              },
+              {
+                id: 6,
+                content:
+                  'I tell my students the best way to learn programming is to hand write your code. I recommend everyone send their hand-written code to Elon Musk for review.',
+                author: {
+                  name: 'Mohsen Modhej',
+                  role: 'Expert Developer',
+                  image: 'images/avatars/avatar-6.jpg',
+                },
+              },
+              {
+                id: 7,
+                content:
+                  'This makes me even more efficient.  I just push my code, print it out and mail it in!  And now with Fax its even quicker!!',
+                author: {
+                  name: 'Peter',
+                  role: 'Ruby on Rails Developer',
+                  image: 'images/avatars/avatar-3.png',
+                },
+              },
+              {
+                id: 8,
+                content:
+                  'This is really my jam! Print outs, faxes and hand written code reviews. Retro but unmistakingly the future.',
+                author: {
+                  name: 'Fred',
+                  role: 'Cobol Developer',
+                  image: 'images/avatars/avatar-5.png',
+                },
+              },
+            ],
+            }"
+            role="list"
+            class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3"
+          >
+            <template x-for="testimonial in testimonials" :key="testimonial.id">
+              <figure
+                class="relative rounded-2xl bg-white p-6 text-center shadow-xl shadow-slate-900/10"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="105"
+                  height="78"
+                  class="absolute top-6 left-6 fill-slate-100"
+                >
+                  <path
+                    d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                  />
+                </svg>
+                <blockquote class="relative max-w-md">
+                  <p
+                    class="text-lg tracking-tight text-slate-900"
+                    x-text="testimonial.content"
+                  ></p>
+                </blockquote>
+                <figcaption class="relative mt-8">
+                  <img
+                    class="mx-auto h-12 w-12 rounded-full object-cover"
+                    :src="testimonial.author.image"
+                    alt=""
+                    width="56"
+                    height="56"
+                  />
+                  <div class="mt-3 text-center">
+                    <div
+                      x-text="testimonial.author.name"
+                      class="font-display text-base text-slate-900"
+                    ></div>
+                    <div
+                      x-text="testimonial.author.role"
+                      class="mt-1 text-sm text-slate-500"
+                    ></div>
+                  </div>
+                </figcaption>
+              </figure>
+              <!-- <li>
+                <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                  <template
+                    x-for="(testimonial, testimonialIndex) in column[index].id"
+                    :key="index"
+                  >
+                    <li>
+                      <figure
+                        class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="absolute top-6 left-6 fill-slate-100"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          />
+                        </svg>
+                        <blockquote class="relative">
+                          <p
+                            x-text="column[1].content"
+                            class="text-lg tracking-tight text-slate-900"
+                          ></p>
+                        </blockquote>
+                        <figcaption
+                          class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6"
+                        >
+                          <div>
+                            <div
+                              x-text="column[1].author.name"
+                              class="font-display text-base text-slate-900"
+                            ></div>
+                            <div
+                              x-text="column[1].author.role"
+                              class="mt-1 text-sm text-slate-500"
+                            ></div>
+                          </div>
+                          <div class="overflow-hidden rounded-full bg-slate-50">
+                            <img
+                              class="h-14 w-14 object-cover"
+                              :src="column[1].author.image"
+                              alt=""
+                              width="56"
+                              height="56"
+                            />
+                          </div>
+                        </figcaption>
+                      </figure>
+                    </li>
+                  </template>
+                </ul>
+              </li> -->
+            </template>
+          </ul>
+          <!-- <ul
+            x-data="{testimonials: [
+                {
+                    id: 1,
+                    content: 'It used to take me forever to get my code reviewed. Since Friday, I've been printing it all out and getting Elon to look at it and my god its been amazing!!',
+                    author: {
+                      name: 'Sheryl',
+                      role: 'Software Developer',
+                      image: avatarImage1,
+                    }
+                },
+                {
+                    id: 2,
+                    content:
+                      'This is a gamechanger. Kicking myself I didn't think of this.  Would have made ProductHunt #1',
+                    author: {
+                      name: 'Amy',
+                      role: 'IOS Developer',
+                      image: avatarImage4,
+                    },
+                  },
+                  {
+                    id: 3,
+                    content:
+                      'I love how Elon handwrites the reviews and grades my code. Just like my college professors. From the 1940s.',
+                    author: {
+                      name: 'Rishabh',
+                      role: 'SRE Engineer',
+                      image: avatarImage7,
+                    },
+                  },
+            ]}"
+            role="list"
+            class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3"
+          >
+            <template
+              x-for="testimonial in in testimonials"
+              :key="testimonial.id"
+            >
+              <li>
+                <figure
+                  class="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="105"
+                    height="78"
+                    class="absolute top-6 left-6 fill-slate-100"
+                  >
+                    <path
+                      d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                    />
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-slate-900">
+                      {testimonial.content}
+                    </p>
+                  </blockquote>
+                  <figcaption
+                    class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6"
+                  >
+                    <div>
+                      <div class="font-display text-base text-slate-900">
+                        {testimonial.author.name}
+                      </div>
+                      <div class="mt-1 text-sm text-slate-500">
+                        {testimonial.author.role}
+                      </div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50">
+                      <img
+                        class="h-14 w-14 object-cover"
+                        src="{testimonial.author.image}"
+                        alt=""
+                        width="56"
+                        height="56"
+                      />
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+            </template>
+          </ul> -->
+        </div>
+      </section>
+      <!-- Pricing -->
+      <section
+        id="pricing"
+        aria-label="Pricing"
+        class="bg-slate-900 py-20 sm:py-32"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="md:text-center">
+            <h2
+              class="font-display text-3xl tracking-tight text-white sm:text-4xl"
+            >
+              <span class="relative whitespace-nowrap">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 281 40"
+                  class="absolute top-1/2 left-0 h-[1em] w-full fill-blue-400"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z"
+                  />
+                </svg>
+                <span class="relative">Simple pricing,</span>
+              </span>
+              for social media juggernauts of any size.
+            </h2>
+            <p class="mt-4 text-lg text-slate-400">
+              It doesn&#39;t matter what your market cap is, let Elon check your
+              code, personally.
+            </p>
+          </div>
+          <div
+            class="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8"
+          >
+            <section class="flex flex-col rounded-3xl px-6 sm:px-8 lg:py-8">
+              <h3 class="mt-5 font-display text-lg text-white">Starter</h3>
+              <p class="mt-2 text-base text-slate-400">
+                Good for anyone getting started in the social media game.
+              </p>
+              <p
+                class="order-first font-display text-5xl font-light tracking-tight text-white"
+              >
+                $15 Billion
+              </p>
+              <ul
+                role="list"
+                class="order-last mt-10 flex flex-col gap-y-3 text-sm text-slate-200"
+              >
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4">Elon personally reviews all code</span>
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Up to 4 characters of comments including '+1' and
+                    'LGTM'</span
+                  >
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >🚀 emoji used when code review is ready for merge</span
+                  >
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4">All emojis are hand drawn by Elon</span>
+                </li>
+              </ul>
+              <a
+                href="/register"
+                aria-label="Get started with the Starter plan for $15 Billion"
+                class="group mt-8 inline-flex items-center justify-center rounded-full py-2 px-4 text-sm text-white ring-1 ring-slate-700 hover:ring-slate-500 focus:outline-none focus-visible:outline-white active:text-slate-400 active:ring-slate-700"
+                >Get Started</a
+              >
+            </section>
+            <section
+              class="order-first flex flex-col rounded-3xl bg-blue-600 px-6 py-8 sm:px-8 lg:order-none"
+            >
+              <h3 class="mt-5 font-display text-lg text-white">Tweet Level</h3>
+              <p class="mt-2 text-base text-white">
+                Perfect for large social media companies.
+              </p>
+              <p
+                class="order-first font-display text-5xl font-light tracking-tight text-white"
+              >
+                $44 Billion
+              </p>
+              <ul
+                role="list"
+                class="order-last mt-10 flex flex-col gap-y-3 text-sm text-white"
+              >
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-white"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4">Everything in Starter, plus</span>
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-white"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Printouts returned beautifully bound with handwritten
+                    notes</span
+                  >
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-white"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Exclusive 🚢 emoji used when code review is ready for
+                    shipping</span
+                  >
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-white"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Exclusive free pickup by a reputed courier</span
+                  >
+                </li>
+              </ul>
+              <a
+                href="/register"
+                aria-label="Get started with the Tweet Level plan for $44 Billion"
+                class="group mt-8 inline-flex items-center justify-center rounded-full bg-white py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-blue-50 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:bg-blue-200 active:text-slate-600"
+                >Get Started</a
+              >
+            </section>
+            <section class="flex flex-col rounded-3xl px-6 sm:px-8 lg:py-8">
+              <h3 class="mt-5 font-display text-lg text-white">Enterprise</h3>
+              <p class="mt-2 text-base text-slate-400">Supreme Ultimate plan</p>
+              <p
+                class="order-first font-display text-5xl font-light tracking-tight text-white"
+              >
+                $120 Billion
+              </p>
+              <ul
+                role="list"
+                class="order-last mt-10 flex flex-col gap-y-3 text-sm text-slate-200"
+              >
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4">Everything in Tweet Level, plus</span>
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Up to 280 characters of comments well within twitter word
+                    limit</span
+                  >
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Elon hand delivers the review in his Tesla</span
+                  >
+                </li>
+                <li class="flex">
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 flex-none fill-current stroke-current text-slate-400"
+                  >
+                    <path
+                      d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                      stroke-width="0"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.25"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="ml-4"
+                    >Once merged your code is printed out and sent to space
+                    aboard a SpaceX rocket.</span
+                  >
+                </li>
+              </ul>
+              <a
+                href="/register"
+                aria-label="Get started with the Enterprise plan for $120 Billion"
+                class="group mt-8 inline-flex items-center justify-center rounded-full py-2 px-4 text-sm text-white ring-1 ring-slate-700 hover:ring-slate-500 focus:outline-none focus-visible:outline-white active:text-slate-400 active:ring-slate-700"
+                >Get Started</a
+              >
+            </section>
+          </div>
+        </div>
+      </section>
+      <!-- FAQs -->
+      <section
+        id="faq"
+        aria-labelledby="faq-title"
+        class="relative overflow-hidden bg-slate-50 py-20 sm:py-32"
+      >
+        <img
+          class="absolute top-0 left-1/2 max-w-none translate-x-[-30%] -translate-y-1/4"
+          src="images/background-faqs.jpg"
+          alt=""
+          width="1558"
+          height="946"
+        />
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:mx-0">
+            <h2
+              id="faq-title"
+              class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
+            >
+              Frequently asked questions
+            </h2>
+            <p class="mt-4 text-lg tracking-tight text-slate-700">
+              Such an awe-inspiring service yet simple service is hard to
+              believe - so you may have some questions. Here are some of the
+              more frequent asked.
+            </p>
+          </div>
+          <div itemscope itemtype="https://schema.org/FAQPage">
+            <ul
+              role="list"
+              class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3"
+            >
+              <li>
+                <div
+                  itemscope
+                  itemprop="mainEntity"
+                  itemtype="https://schema.org/Question"
+                >
+                  <h3
+                    class="font-display text-lg leading-7 text-slate-900"
+                    itemprop="name"
+                  >
+                    Does Elon Musk review the code personally?
+                  </h3>
+                  <div
+                    itemscope
+                    itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div itemprop="text">
+                      <p class="mt-4 text-sm text-slate-700">
+                        Of course! Elon has rescheduled large blocks of time
+                        away from making electric cars and saving humanity by
+                        colonizing Mars to focus almost entirely on reviewing
+                        YOUR code.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  itemscope
+                  itemprop="mainEntity"
+                  itemtype="https://schema.org/Question"
+                >
+                  <h3
+                    class="font-display text-lg leading-7 text-slate-900"
+                    itemprop="name"
+                  >
+                    Sounds expensive. How much does this cost?
+                  </h3>
+                  <div
+                    itemscope
+                    itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div itemprop="text">
+                      <p class="mt-4 text-sm text-slate-700">
+                        This service is very inexpensive. Check out our pricing
+                        table. To ensure the continuation of life on planet
+                        Earth code reviews are one of the safest ways to ensure
+                        no large infestations of bugs occur.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  itemscope
+                  itemprop="mainEntity"
+                  itemtype="https://schema.org/Question"
+                >
+                  <h3
+                    class="font-display text-lg leading-7 text-slate-900"
+                    itemprop="name"
+                  >
+                    How do I apply for a job helping with these code reviews?
+                  </h3>
+                  <div
+                    itemscope
+                    itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div itemprop="text">
+                      <p class="mt-4 text-sm text-slate-700">
+                        Due to Elon's fanatical adherence to time mangement
+                        principles and his magical 'LGTM' commentary there won't
+                        ever be a pull request that goes un-reviewed for longer
+                        than 2 to 3 minutes. As such we do not foresee needing
+                        to hire any more people.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-50">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="py-16">
+          <div class="flex items-center">
+            <span class="text-3xl">🖨</span>
+            <span class="ml-2 text-2xl font-bold">Elon Code Review</span>
+          </div>
+          <nav class="mt-10 text-sm" aria-label="quick links">
+            <div class="-my-1 flex justify-center gap-x-6">
+              <a
+                href="#features"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                >Features</a
+              >
+              <a
+                href="#testimonials"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                >Testimonials</a
+              >
+              <a
+                href="#pricing"
+                class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                >Pricing</a
+              >
+            </div>
+          </nav>
+        </div>
+        <div
+          class="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between"
+        >
+          <div class="flex gap-x-6">
+            Made with &#x1F923; and &#x2764;&#xFE0F; by
+            <a href="/register" class="font-bold text-blue-500 underline"
+              >Rob Zolkos</a
+            >
+            <a
+              href="https://twitter.com/robzolkos"
+              class="group"
+              aria-label="Rob Zolkos on Twitter"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-6 w-6 fill-slate-500 group-hover:fill-slate-700"
+              >
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0 0 22 5.92a8.19 8.19 0 0 1-2.357.646 4.118 4.118 0 0 0 1.804-2.27 8.224 8.224 0 0 1-2.605.996 4.107 4.107 0 0 0-6.993 3.743 11.65 11.65 0 0 1-8.457-4.287 4.106 4.106 0 0 0 1.27 5.477A4.073 4.073 0 0 1 2.8 9.713v.052a4.105 4.105 0 0 0 3.292 4.022 4.093 4.093 0 0 1-1.853.07 4.108 4.108 0 0 0 3.834 2.85A8.233 8.233 0 0 1 2 18.407a11.615 11.615 0 0 0 6.29 1.84"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/robzolkos/eloncodereview"
+              class="group"
+              aria-label="Elon Code Review on GitHub"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-6 w-6 fill-slate-500 group-hover:fill-slate-700"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="mt-6 text-sm text-slate-500 sm:mt-0">
+            Copyright &copy; 2022 ElonCodeReview. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
