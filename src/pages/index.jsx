@@ -13,8 +13,19 @@ import { Testimonials } from '@/components/Testimonials'
 export default function Home() {
   return (
     <>
-      <Script src="https://cdn.usefathom.com/script.js" data-site="GCGAUKHE" />
       <Head>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=G-NGGM097MRY`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NGGM097MRY');
+        `}
+      </Script>
         <title>
           Elon Code Review - Print it out and Elon Musk will check it
         </title>
