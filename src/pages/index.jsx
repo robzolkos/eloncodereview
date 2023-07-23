@@ -13,7 +13,6 @@ import { Testimonials } from '@/components/Testimonials'
 export default function Home() {
   return (
     <>
-      <Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=G-NGGM097MRY`}
         strategy="afterInteractive"
@@ -26,6 +25,8 @@ export default function Home() {
           gtag('config', 'G-NGGM097MRY');
         `}
       </Script>
+
+      <Head>
         <title>
           Elon Code Review - Print it out and Elon Musk will check it
         </title>
